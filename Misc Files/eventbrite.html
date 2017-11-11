@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	
+
+
+
+<div>hehad</div>
+
+
+	<script>
+	var queryURL = "https://www.eventbriteapi.com/v3/events/search/?location.address=pasadena&expand=organizer,venue&token=ZHYMXVXF44JLXPWWBSYQ";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+
+      // Printing the entire object to console
+      console.log(response);
+     console.log(response.events[0].venue.address.latitude);
+     console.log(response.events[0].venue.address.longitude);
+
+     var lat = response.events[0].venue.address.latitude; 
+     var long = response.events[0].venue.address.longitude;
+     var location = (lat + "," + long);
+
+
+     console.log(location);
+
+
+
+    });
+
+//location.longitude
+//locatuon.latitude
+  </script>
+</body>
+</html>
