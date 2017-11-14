@@ -3,6 +3,10 @@
 
 $(document).ready(function () {
 
+	$("#submit").on("click", function(){
+		
+	})
+
 	$("#submitbutton").on("click", function() {
 
 		window.location.href = "main.html";

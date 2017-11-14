@@ -14,6 +14,8 @@ var parkingInfoArray = [];
 
 function initMap() {
 
+
+
   var Westwood = {lat: 34.063 , lng: -118.446};
 
   var WoodlandHills = {lat: 34.177395, lng: -118.601543};
@@ -21,6 +23,8 @@ function initMap() {
   var Pasadena = {lat: 34.140840, lng: -118.126073};
 
   var SantaMonica = {lat: 34.026365, lng: -118.483078};
+
+  var losAngeles = [WoodlandHills, Pasadena, SantaMonica];
 
   // grabbing the above variables and displaying it on the map div
 
@@ -84,8 +88,15 @@ function createMarker(place) {
 			// setting up the markers for the EventBrite events.
 
 			
+    var x = $(document.createElement("#savedDivsRow", "BUTTON"));
+    var t = document.createTextNode("Save");
+    x.appendChild(t);
+    document.body.appendChild(x);
 
-			 
+    console.log(x, t);
+     
+      
+    
 
 			 var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
@@ -95,21 +106,26 @@ function createMarker(place) {
             '<p>' + response.events[i].description.text + '</p>' + 
             // '<img src=' + response.events[i].organizer.logo.url + '>' + 
             '<p>Link: <a href='+ response.events[i].url + '>'+
-            response.events[i].url + '</a> '+
+            response.events[i].url + '</a> '+'<p>' + x + '>' +
             '</p>'+
             '</div>'+
             '</div>';
 
+
+// make a save button, give it a class, call that class, use this, 
             // console.log(contentString);                 
 
             
 
             var infowindow = new google.maps.InfoWindow({
             content: contentString,
-            maxWidth: 400          
+            maxWidth: 400
+
+
 
              
         });
+
 
             var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(latitudes, longitudes),    
@@ -125,6 +141,11 @@ function createMarker(place) {
           marker.addListener('click', function() {
           infowindow.setContent(this.html);
           infowindow.open(map, this);
+        
+
+
+
+        
 
         });
 
