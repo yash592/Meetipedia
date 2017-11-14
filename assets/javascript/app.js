@@ -83,15 +83,9 @@ function createMarker(place) {
 			
 			// setting up the markers for the EventBrite events.
 
-			var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(latitudes, longitudes),    
-			icon: 'assets/images/meetup.png',
-			map: map,
-			// title: response.events[i].name.html
+			
 
-		});
-
-			 marker.setMap(map);
+			 
 
 			 var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
@@ -106,23 +100,30 @@ function createMarker(place) {
             '</div>'+
             '</div>';
 
-            // console.log(contentString);
-
-            contentArr.push(contentString);
+            // console.log(contentString);                 
 
             
 
-            for (var i = 0; i < contentArr.length; i++) {
-
             var infowindow = new google.maps.InfoWindow({
-            content: contentArr[i],
+            content: contentString,
             maxWidth: 400          
 
              
         });
 
+            var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(latitudes, longitudes),    
+			icon: 'assets/images/meetup.png',
+			map: map,
+			html: contentString
+			// title: response.events[i].name.html
+
+		});
+
+            marker.setMap(map);
+
           marker.addListener('click', function() {
-          infowindow.setContent(contentArr);
+          infowindow.setContent(this.html);
           infowindow.open(map, this);
 
         });
@@ -132,7 +133,7 @@ function createMarker(place) {
            
 
 
-            } 
+            
 
             // console.log(infowindow);           
 
