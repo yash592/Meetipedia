@@ -1,68 +1,67 @@
-body {
+/*body {
 
-	background: url("https://i.imgur.com/eIcQ63x.jpg");
-	background-size: auto;
-	color: white;
+    background: url("https://i.imgur.com/eIcQ63x.jpg");
+    background-size: auto;
+    color: white;
 
-}
-
-
-
-#meet {
-	font-weight: bolder;
-	/*color:black;*/
-}
-
-#pedia {
-	font-weight: lighter;
-	color: red;
-}
+}*/
 
 
-h1 {
-	text-align: center;
+
+/*#meet {
+    font-weight: bolder;
+    /*color:black;*/
+/*}*/
+
+/*#pedia {
+    font-weight: lighter;
+    color: red;
+}*/
+
+
+/*h1 {
+    text-align: center;
     font-size: 96px;
     /* text-shadow: 2px 2px black; */
-    font-family: 'Syncopate', sans-serif;
+   /* font-family: 'Syncopate', sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: center;
     text-align: center;
     margin-top: 17%;
 
-	
-}
-
+    
+}*/
+/*
 .pure-form {
-	opacity: 0.5;
-	color: black;
-	text-align: center;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
+    opacity: 0.5;
+    color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}*/
 
-.pure-input-rounded{
-	/*opacity: 0.5;*/
-	text-align: center;
-	 width: 16%;
+/*.pure-input-rounded{
+    opacity: 0.5;
+    text-align: center;
+     width: 16%;
 }
-
+/
 .dropdown {
-	text-align: center;
+    text-align: center;
 
 }
-
-#pedia {
-	font-weight: lighter;
+/*#pedia {
+    font-weight: lighter;
 }
+*/
 
 
-
-.dropdown-toggle {
-	opacity: 0.2;
-}
-
+/*.dropdown-toggle {
+    opacity: 0.2;
+}*/
+/*
 #footer {
         position: fixed;
     right: 39%;
@@ -70,11 +69,11 @@ h1 {
     bottom: 0;
     margin: 0;
     padding: 0;
-    width: 26%;
-    /* text-shadow: 2px 2px white; */
-}
+    width: 26%;*/
+    /* text-shadow: 2px 2px white; 
+}*/
 
-#submitbutton {
+/*#submitbutton {
      color: black;
     text-align: center;
     display: flex;
@@ -88,4 +87,4 @@ h1 {
     opacity: 0.5;
     box-shadow: 1px 1px grey;
 
-}
+}*/
