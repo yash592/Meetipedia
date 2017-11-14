@@ -25,7 +25,7 @@ function initMap() {
   // grabbing the above variables and displaying it on the map div
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: Pasadena,
+    center: SantaMonica,
     zoom: 15,
   });
 
@@ -34,7 +34,7 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
-    location: Pasadena,
+    location: SantaMonica,
     radius: 5000,
     type: ['restaurant'],
   }, callback);
@@ -66,7 +66,7 @@ function createMarker(place) {
 };
 
 
-  var queryURL = "https://www.eventbriteapi.com/v3/events/search/?location.address=Pasadena&expand=organizer,venue&token=ZHYMXVXF44JLXPWWBSYQ";
+  var queryURL = "https://www.eventbriteapi.com/v3/events/search/?location.address=SantaMonica&expand=organizer,venue&token=ZHYMXVXF44JLXPWWBSYQ";
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -87,7 +87,7 @@ function createMarker(place) {
 
 			 
 
-			 var contentString = '<div id="content">'+
+			 var contentString = '<div id="wrapper">' + '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">' + response.events[i].name.html + '</h1>'+
@@ -97,12 +97,23 @@ function createMarker(place) {
             '<p>Link: <a href='+ response.events[i].url + '>'+
             response.events[i].url + '</a> '+
             '</p>'+
+            '<button id="save" data-content="'+response.events[i].name.html + '<p>Link: <a href=' + response.events[i].url + '>'+
+            response.events[i].url + '</a> ' +'">Save This</button>'
             '</div>'+
             '</div>';
+            
+            // var savedContent= '<div id="content">'+
+            // '<div id="siteNotice">'+
+            // '</div>'+
+            // '<h1 id="firstHeading" class="firstHeading">' + response.events[i].name.html + '</h1>'+ '<p>Link: <a href='+ response.events[i].url + '>'+
+            // response.events[i].url + '</a> '+
+            // '</p>' + '</div>'
 
             // console.log(contentString);                 
-
             
+           
+
+           
 
             var infowindow = new google.maps.InfoWindow({
             content: contentString,
@@ -132,18 +143,16 @@ function createMarker(place) {
 
            
 
-
-            
-
             // console.log(infowindow);           
-
-          
-
-    		
 
 
     	} // first for loop closes here
-
+     $(document).on("click", "#save", function(){
+                  console.log("yolo");
+                  $("#event-save").prepend($(this).attr("data-content"));
+                   console.log($(this).attr("data-content"));
+                });
+          
     	// console.log(contentArr);
 
 
@@ -185,10 +194,30 @@ function createMarker(place) {
 
     		// placing the markers here
 
-    		var marker = new google.maps.Marker ({
+      var parkingString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+
+                '<h1 id="firstHeading" class="firstHeading"> Address: ' + parkingresponse["0"]._embedded["pw:location"].address1 + '</h1>'+
+                '<div id="bodyContent">'+
+                '<p> $' + parkingresponse[i].purchase_options["0"].price.USD + '</p>' + 
+                '<p><a href=https://www.parkwhiz.com' + parkingresponse[i].purchase_options["0"]._links["site:purchase"].href + ' target=_blank>Click here to book parking</a>' 
+                // '<img src=' + response.events[i].organizer.logo.url + '>' + 
+                '</div>'+
+                '</div>';
+      var parkWindow = new google.maps.InfoWindow({
+            content: parkingString,
+            maxWidth: 400    
+
+              });
+        
+
+
+    		var parkingMarker = new google.maps.Marker ({
 			position: new google.maps.LatLng(parkingLatitude, parkingLongitude),    
 			icon: 'assets/images/parking.png',
 			map: map,
+      html: parkingString
 			// infowindow: myinfowindow
 			// title: parkingresponse[i].location_id
 
@@ -196,9 +225,9 @@ function createMarker(place) {
 
 
 
-    		google.maps.event.addListener(marker, 'click', function () {
-			infowindow.setContent(parkingresponse[i].purchase_options["0"].price.USD);
-			infowindow.open(map, this);
+    		google.maps.event.addListener(parkingMarker, 'click', function () {
+			parkWindow.setContent(this.html);
+			parkWindow.open(map, this);
                });
              
 
@@ -211,8 +240,7 @@ function createMarker(place) {
     	console.log(parkingInfoArray);
     	console.log(infowindow);
 
-    	
-
+    
 
     }); // parking response ends here
 
