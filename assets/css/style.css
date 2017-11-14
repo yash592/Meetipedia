@@ -32,3 +32,10 @@ border-top: solid 10px red;
 border-left: solid 10px transparent;
 border-right: solid 10px transparent;
 }
+
+#event-save{
+	max-width: 400px;
+	/*max-height: 400px;*/
+	font-size: 12px;
+	display:table;
+}
