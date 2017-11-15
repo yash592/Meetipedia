@@ -47,8 +47,10 @@ function initMap() {
 
   // grabbing the above variables and displaying it on the map div
 
-  map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
+
     center: mapareas[neighborhood],
+
     zoom: 15,
   });
 
@@ -57,7 +59,9 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
+
     location: mapareas[neighborhood],
+
     radius: 5000,
     type: ['restaurant'],
   }, callback);
@@ -89,7 +93,10 @@ function createMarker(place) {
 };
 
 
+
   var queryURL = "https://www.eventbriteapi.com/v3/events/search/?location.address=" + neighborhood + "&expand=organizer,venue&token=ZHYMXVXF44JLXPWWBSYQ";
+
+ 
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -110,7 +117,7 @@ function createMarker(place) {
 
 			 
 
-			 var contentString = '<div id="content">'+
+			 var contentString = '<div id="wrapper">' + '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">' + response.events[i].name.html + '</h1>'+
@@ -120,12 +127,23 @@ function createMarker(place) {
             '<p>Link: <a href='+ response.events[i].url + 'target=_blank' + '>'+
             response.events[i].url + '</a> '+
             '</p>'+
+            '<button id="save" data-content="'+response.events[i].name.html + '<p>Link: <a href=' + response.events[i].url + '>'+
+            response.events[i].url + '</a> ' +'">Save This</button>'
             '</div>'+
             '</div>';
+            
+            // var savedContent= '<div id="content">'+
+            // '<div id="siteNotice">'+
+            // '</div>'+
+            // '<h1 id="firstHeading" class="firstHeading">' + response.events[i].name.html + '</h1>'+ '<p>Link: <a href='+ response.events[i].url + '>'+
+            // response.events[i].url + '</a> '+
+            // '</p>' + '</div>'
 
             // console.log(contentString);                 
-
             
+           
+
+           
 
             var infowindow = new google.maps.InfoWindow({
             content: contentString,
@@ -156,18 +174,16 @@ function createMarker(place) {
 
            
 
-
-            
-
             // console.log(infowindow);           
-
-          
-
-    		
 
 
     	} // first for loop closes here
-
+     $(document).on("click", "#save", function(){
+                  console.log("yolo");
+                  $("#event-save").prepend($(this).attr("data-content"));
+                   console.log($(this).attr("data-content"));
+                });
+          
     	// console.log(contentArr);
 
 
@@ -211,44 +227,49 @@ function createMarker(place) {
 
     		// console.log(parkingLongitude);
 
-        var parkingContentString = '<div id="parkingcontent">'+
-            '<div id="parkingNotice">'+
-            '</div>'+
-            '<h1 id="parkingHeading" class="parkingHeading">' + parkingresponse[i]._embedded["pw:location"].name + '</h1>'+
-            '<div id="bodyContent">'+
-            '<p>' + parkingresponse[i]._embedded["pw:location"].address1+ '</p>' + 
-            // '<img src=' + response.events[i].organizer.logo.url + '>' + 
-            '<p>$' + parkingresponse[i].purchase_options["0"].price.USD +
-            '</p>'+
-            '</div>'+
-            '</div>';
+         
+
+      var parkingString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+
+                '<h1 id="firstHeading" class="firstHeading"> Address: ' + parkingresponse[i]._embedded["pw:location"].address1 + '</h1>'+
+                '<div id="bodyContent">'+
+                '<p> $' + parkingresponse[i].purchase_options["0"].price.USD + '</p>' + 
+                '<p><a href=https://www.parkwhiz.com' + parkingresponse[i].purchase_options["0"]._links["site:purchase"].href + ' target=_blank>Click here to book parking</a>' 
+                // '<img src=' + response.events[i].organizer.logo.url + '>' + 
+                '</div>'+
+                '</div>';
+      var parkWindow = new google.maps.InfoWindow({
+            content: parkingString,
+            maxWidth: 400    
+
+              });
+        
 
 
-    		var parkinginfowindow = new google.maps.InfoWindow({
-            content: parkingContentString,
-            maxWidth: 400 
+    		var parkingMarker = new google.maps.Marker ({
+			position: new google.maps.LatLng(parkingLatitude, parkingLongitude),    
+			icon: 'assets/images/parking.png',
+			map: map,
+      html: parkingString
+			// infowindow: myinfowindow
+			// title: parkingresponse[i].location_id
 
-          });
-
-
-
-            var parkingmarker = new google.maps.Marker({
-            position: new google.maps.LatLng(parkingLatitude, parkingLongitude),    
-            icon: 'assets/images/parking.png',
-            map: map,
-            html: parkingContentString
 
           });
 
             parkingmarker.setMap(map);
 
-          parkingmarker.addListener('click', function() {
-            infowindow.close();
-          parkinginfowindow.setContent(this.html);
-          parkinginfowindow.open(map, this);
+          
 
-        });
 
+
+    		google.maps.event.addListener(parkingMarker, 'click', function () {
+			parkWindow.setContent(this.html);
+			parkWindow.open(map, this);
+               });
+             
 
 
 
@@ -261,8 +282,7 @@ function createMarker(place) {
     	// console.log(infowindow);
      //  console.log(parkingContentString);
 
-    	
-
+    
 
     }); // parking response ends here
 
