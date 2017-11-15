@@ -89,3 +89,9 @@ h1 {
     box-shadow: 1px 1px grey;
 
 }
+
+.locationdropdown {
+    color: black;
+    border-radius: 10px;
+    opacity: 0.5;
+}
