@@ -1,5 +1,8 @@
 
+$( document ).ready(function() {
 
+
+  
 
 $("#submitbutton").on("click", function(event) {
 
@@ -11,8 +14,8 @@ $("#submitbutton").on("click", function(event) {
 
   var neighborhood = $("#neighborhood").val().trim();
 
-  if (neighborhood !="Chicago" && neighborhood !="Pasadena" && neighborhood !="Hollywood" && neighborhood !="Woodland hills" && neighborhood !="Santa Monica" && neighborhood !="Irvine" && neighborhood !="San Francisco"
-  	 && neighborhood !="chicago" && neighborhood !="pasadena" && neighborhood !="hollywood" && neighborhood !="woodland hills" && neighborhood !="santa Monica" && neighborhood !="irvine" && neighborhood !="san francisco") { 
+  if (neighborhood !="Chicago" && neighborhood !="Pasadena" && neighborhood !="Hollywood" && neighborhood !="Woodland Hills" && neighborhood !="Santa Monica" && neighborhood !="Irvine" && neighborhood !="San Francisco"
+  	 && neighborhood !="chicago" && neighborhood !="pasadena" && neighborhood !="hollywood" && neighborhood !="woodland hills" && neighborhood !="santa monica" && neighborhood !="irvine" && neighborhood !="san francisco") { 
 
   	window.location.href = "bummer.html";  	
 
@@ -29,6 +32,8 @@ $("#submitbutton").on("click", function(event) {
   window.location.href = "main.html";
   	
   };
+
+});
 
   
 

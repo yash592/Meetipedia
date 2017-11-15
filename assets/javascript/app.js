@@ -143,7 +143,7 @@ function createMarker(place) {
             '<div id="bodyContent">'+
             '<p>' + response.events[i].description.text + '</p>' + 
             // '<img src=' + response.events[i].organizer.logo.url + '>' + 
-            '<p>Link: <a href='+ response.events[i].url + 'target=_blank' + '>'+
+            '<p>Link: <a href='+ response.events[i].url + ' target=_blank + >'+
             response.events[i].url + '</a> '+
             '</p>'+
             '<button id="save" data-content="'+response.events[i].name.html + '<p>Link: <a href=' + response.events[i].url + '>'+
@@ -203,6 +203,7 @@ function createMarker(place) {
                   console.log("yolo");
                   $(".eventone-save").append($(this).attr("data-content"));
                    console.log($(this).attr("data-content"));
+                   var data = localStorage.setItem("content", content);
                 });
 
     

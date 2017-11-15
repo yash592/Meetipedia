@@ -1,5 +1,6 @@
  #map {
-  height: 80%;
+  height: 100%;
+  width: 85%;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -45,13 +46,23 @@ border-right: solid 10px transparent;
     float:left;
 }
 
-.eventone-save{
-	width: 25%;
-    height: 210px;
-    float: left;
+.eventone-save {
+
+  width: 15%;
+    position: absolute;
+    height: 100%;
+    float: right;
+    top: 0px;
+    right: 0px;
     font-size: 20px;
     display: table;
-    background-color: grey;
-    color: white;
-     overflow: hidden;
+     background-color: #23282C;
+     color: white; 
+    overflow: hidden;
+    text-align: center;
+    /*background: url(https://i.imgur.com/eIcQ63x.jpg);*/
+
+
+
 }
+    
