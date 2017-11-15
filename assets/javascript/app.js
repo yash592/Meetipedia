@@ -146,8 +146,7 @@ function createMarker(place) {
             '<p>Link: <a href='+ response.events[i].url + ' target=_blank + >'+
             response.events[i].url + '</a> '+
             '</p>'+
-            '<button id="save" data-content="'+response.events[i].name.html + '<p>Link: <a href=' + response.events[i].url + '>'+
-            response.events[i].url + '</a> ' +'">Save This</button>'
+            '<button id="save" data-content="' +  response.events[i].name.html + '<p><a href=' + response.events[i].url + '>Click here to access the meetup</a> ' +'">Save This</button>'
             '</div>'+
             '</div>';
             
@@ -208,7 +207,11 @@ function createMarker(place) {
 
     
     	// console.log(contentArr);
-
+       
+    $("#clear").on("click", function(){
+      $(".eventone-save").empty();
+      // $(".eventone-save").empty();
+    })
 
     	    
 

@@ -60,9 +60,25 @@ border-right: solid 10px transparent;
      color: white; 
     overflow: hidden;
     text-align: center;
+    font-family: 'Rajdhani', sans-serif;
     /*background: url(https://i.imgur.com/eIcQ63x.jpg);*/
 
 
 
+}
+
+#eventheading {
+  color:red;
+
+}
+
+#clear {
+          position: relative;
+    float: right;
+    bottom: 20px;
+    z-index: 1;
+    right: 5%;
+    opacity: 0.5;
+    border-radius: 10px;
 }
     
