@@ -34,12 +34,31 @@ function initMap() {
 
   woodlandhills: {lat: 34.177395, lng: -118.601543},
 
-  pasadena: {lat: 34.140840, lng: -118.126073},
+  pasadena: {lat: 34.147859, lng: -118.144506},
 
   santamonica: {lat: 34.026365, lng: -118.483078},
 
+  irvine: {lat:33.683767, lng: -117.825212},
+
+  sanfrancisco: {lat: 37.775336, lng:-122.412710},
+
+  chicago :{lat: 41.879564, lng:-87.625805}
+
 
   }
+
+  // var parkingmapareas = {
+
+  // hollywoodparking =  [34.095313, 118.332143],
+
+  // woodlandhillsparking = [34.177395, 118.601543],
+
+  // pasadenaparking = [34.140840, 118.126073],
+
+  // santamonicaparking = [34.026365, 118.483078],
+
+
+  // }
 
   console.log(mapareas[neighborhood]);
 
@@ -178,12 +197,15 @@ function createMarker(place) {
 
 
     	} // first for loop closes here
+
+
      $(document).on("click", "#save", function(){
                   console.log("yolo");
-                  $("#event-save").prepend($(this).attr("data-content"));
+                  $(".eventone-save").append($(this).attr("data-content"));
                    console.log($(this).attr("data-content"));
                 });
-          
+
+    
     	// console.log(contentArr);
 
 
@@ -196,13 +218,32 @@ function createMarker(place) {
 
     // Parkwhiz API starts here
 
-    console.log(mapareas[neighborhood]);
+    var parkinglat = (mapareas[neighborhood].lat);
+    var parkinglng = (mapareas[neighborhood].lng);
+
+    console.log(parkinglat + "," + parkinglng);
 
     // var parkingURL = "https://api.parkwhiz.com/v4/quotes/?q=coordinates:34.147859,-118.144506&start_time=2015-11-22T16:35:28-06:00&end_time=2015-11-22T19:35:44-06:00"
 
     // mapareas[neighborhood].lat + "," + mapareas[neighborhood].lng
 
-    var parkingURL = "https://api.parkwhiz.com/v4/quotes/?q=coordinates:" + pasadena[0] + "," + pasadena[1]  + "&start_time=2015-11-22T16:35:28-06:00&end_time=2015-11-22T19:35:44-06:00"
+    // pasadena[0] + "," + pasadena[1]
+
+    // 34.147859,-118.144506 pasadena
+
+    // 34.095313,-118.332143 hollywood
+
+     // 34.026365,118.483078  santamonica
+
+     // 34.177395,118.601543 woodlandhills: 
+
+     // 33.683767,-117.825212 irvine
+
+     // 37.775336, -122.412710 sf
+
+
+
+    var parkingURL = "https://api.parkwhiz.com/v4/quotes/?q=coordinates:" + parkinglat + "," + parkinglng + "&start_time=2015-11-22T16:35:28-06:00&end_time=2015-11-22T19:35:44-06:00"
   $.ajax({
     url: parkingURL,
     method: "GET"
