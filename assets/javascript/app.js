@@ -20,7 +20,7 @@ console.log(neighborhoodlc);
 var neighborhood = neighborhoodlc.replace(" ", "");
 console.log(neighborhood);
 
-var pasadena = ["34.147859" , "-118.144506"];
+var pasadena = ["34.147859","-118.144506"];
 // console.log(pasadenaparking[0]);
 
 
@@ -200,7 +200,9 @@ function createMarker(place) {
 
     // var parkingURL = "https://api.parkwhiz.com/v4/quotes/?q=coordinates:34.147859,-118.144506&start_time=2015-11-22T16:35:28-06:00&end_time=2015-11-22T19:35:44-06:00"
 
-    var parkingURL = "https://api.parkwhiz.com/v4/quotes/?q=coordinates:" + mapareas[neighborhood].lat + "," + mapareas[neighborhood].lng + "&start_time=2015-11-22T16:35:28-06:00&end_time=2015-11-22T19:35:44-06:00"
+    // mapareas[neighborhood].lat + "," + mapareas[neighborhood].lng
+
+    var parkingURL = "https://api.parkwhiz.com/v4/quotes/?q=coordinates:" + pasadena[0] + "," + pasadena[1]  + "&start_time=2015-11-22T16:35:28-06:00&end_time=2015-11-22T19:35:44-06:00"
   $.ajax({
     url: parkingURL,
     method: "GET"
@@ -259,7 +261,7 @@ function createMarker(place) {
 
           });
 
-            parkingmarker.setMap(map);
+            parkingMarker.setMap(map);
 
           
 
