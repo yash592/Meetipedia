@@ -52,16 +52,18 @@ border-right: solid 10px transparent;
     position: absolute;
     height: 100%;
     float: right;
+    padding: 3px;
     top: 0px;
     right: 0px;
     font-size: 20px;
     display: table;
      background-color: #23282C;
-     color: white; 
+     color: #fcc867; 
     overflow: hidden;
     text-align: center;
     font-family: 'Rajdhani', sans-serif;
     /*background: url(https://i.imgur.com/eIcQ63x.jpg);*/
+    text-shadow: 2px 2px black;
 
 
 
