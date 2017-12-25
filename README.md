@@ -1,6 +1,4 @@
-# Project-1
-
-## MEETIPEDIA
+![Meetipedia](https://i.imgur.com/UflLJYf.jpg)
 
 ## A simple webapp to pull data from the Eventbrite, Parkwhiz, GoogleMaps, Google Places APIs and display them on a map for a more streamlined meetup experience.
 
