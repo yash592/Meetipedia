@@ -24,5 +24,5 @@
 
 ## V2 with Google geolocation API to search by zip codes currently in development.
 
-![Footer](https://i.imgur.com/IT6NF5u.png)
+![Footer](https://i.imgur.com/8f5wMLT.png)
 
