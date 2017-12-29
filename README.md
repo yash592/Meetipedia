@@ -4,7 +4,7 @@
 
 ## Meetipedia is a simple webapp to pull data from the Eventbrite, Parkwhiz, GoogleMaps & Google Places APIs and display them on a map for a more streamlined meetup experience.
 
-## V1 Features:
+## v1 Features:
 
 * Enter a city and click Go and the map is populated with markers for the following
 * Cheap parking spots for desired length of time
@@ -22,7 +22,7 @@
 * APIs (Google maps, Google places, Parkwhiz, EventBrite)
 * Adobe Photoshop.
 
-## V2 with Google geolocation API to search by zip codes currently in development.
+## v2 with Google geolocation API to search by zip codes currently in development.
 
 ![Footer](https://i.imgur.com/8f5wMLT.png)
 
